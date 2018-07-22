@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * @author RONALD
  *
@@ -53,10 +55,12 @@ public class Usuario implements Serializable
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="rol_default_id",nullable=true)
+	@JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 	private Rol rolData;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="modulo_default_id",nullable=false)
+	@JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 	private Modulo moduloData;
 
 	public Long getId() {
